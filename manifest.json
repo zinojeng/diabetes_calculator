@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "糖尿病數值轉換器",
     "version": "1.0",
-    "description": "一個用於轉換糖尿病相關數值的工具，包含 HbA1c、GA 和 eAG 的轉換計算",
+    "description": "一個用於轉換糖尿病相關數值的工具，包含 HbA1c、GA、eAG 轉換以及 HOMA-IR、HOMA-β 計算",
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
@@ -17,6 +17,6 @@
       "128": "images/icon128.png"
     },
     "permissions": [],
-    "author": "您的名字或組織",
-    "homepage_url": "您的網站（選填）"
+    "author": "Zino Jeng",
+    "homepage_url": "https://github.com/zinojeng/diabetes_calculator"
   }

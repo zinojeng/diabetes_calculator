@@ -81,6 +81,35 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// HOMA計算器功能
+document.getElementById('homa-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const glucoseValue = parseFloat(document.getElementById('glucose-value').value);
+  const insulinValue = parseFloat(document.getElementById('insulin-value').value);
+  
+  const homaIR = calculateHOMAIR(glucoseValue, insulinValue);
+  const homaBeta = calculateHOMABeta(glucoseValue, insulinValue);
+  
+  const resultDiv = document.getElementById('homa-result');
+  resultDiv.innerHTML = `
+    <div class="result-text">
+      HOMA-IR: ${homaIR.toFixed(1)} ${getHOMAIRStatus(homaIR)}<br>
+      HOMA-β: ${homaBeta.toFixed(1)}% ${getHOMABetaStatus(homaBeta)}
+    </div>
+    <button class="copy-button">複製結果</button>
+  `;
+
+  // 添加複製按鈕事件監聽器
+  const copyButton = resultDiv.querySelector('.copy-button');
+  copyButton.addEventListener('click', function() {
+    const textToCopy = 
+`HOMA-IR: ${homaIR.toFixed(1)} ${getHOMAIRStatus(homaIR)}
+HOMA-β: ${homaBeta.toFixed(1)}% ${getHOMABetaStatus(homaBeta)}`;
+    
+    copyToClipboard(textToCopy);
+  });
+});
+
 // 複製功能
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
@@ -144,4 +173,27 @@ function calculateConfidenceInterval(hba1c) {
     lower: lowerCI,
     upper: upperCI
   };
+}
+
+function calculateHOMAIR(glucose, insulin) {
+  return (glucose * insulin) / 405;
+}
+
+function calculateHOMABeta(glucose, insulin) {
+  return (20 * insulin) / (glucose - 3.5);
+}
+
+function getHOMAIRStatus(value) {
+  if (value < 1.0) return "(胰島素敏感)";
+  if (value <= 2.5) return "(正常範圍)";
+  if (value <= 3.0) return "(可能存在胰島素抵抗)";
+  if (value <= 4.0) return "(胰島素阻抗症候群高風險)";
+  return "(可能與 T2DM、代謝症候群相關)";
+}
+
+function getHOMABetaStatus(value) {
+  if (value > 100) return "(β 細胞功能良好)";
+  if (value >= 50) return "(正常範圍)";
+  if (value >= 30) return "(β 細胞功能下降)";
+  return "(明顯 β 細胞衰竭)";
 }
