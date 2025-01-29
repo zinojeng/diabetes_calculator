@@ -11,6 +11,7 @@
   <div class="tabs">
     <button class="tab-button active" data-tab="hba1c">HbA1c轉換器</button>
     <button class="tab-button" data-tab="ga">GA轉換器</button>
+    <button class="tab-button" data-tab="homa">HOMA計算器</button>
   </div>
 
   <div id="hba1c-tab" class="tab-content active">
@@ -64,6 +65,45 @@
           <li>血糖每變化 10 mg/dL，GA 值大約會變化 2%</li>
         </ul>
         <p class="note">注意：eAG 計算公式適用於末期腎病患者</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="homa-tab" class="tab-content">
+    <form id="homa-form">
+      <div class="input-group">
+        <label for="glucose-value">空腹血糖值 (mg/dL):</label>
+        <input type="number" id="glucose-value" name="glucose-value" step="0.1" required>
+      </div>
+      <div class="input-group">
+        <label for="insulin-value">空腹胰島素值 (μU/mL):</label>
+        <input type="number" id="insulin-value" name="insulin-value" step="0.1" required>
+      </div>
+      <button type="submit">計算 HOMA 指數</button>
+    </form>
+    <div id="homa-result" class="result-box"></div>
+    <div class="info-box">
+      <p>計算公式：</p>
+      <ul>
+        <li>HOMA-IR = (空腹血糖 × 空腹胰島素) ÷ 405</li>
+        <li>HOMA-β = (20 × 空腹胰島素) ÷ (空腹血糖 - 3.5)</li>
+      </ul>
+      <div class="reference-info">
+        <p>HOMA-IR 參考值：</p>
+        <ul>
+          <li>&lt;1.0：胰島素敏感</li>
+          <li>1.0-2.5：正常範圍</li>
+          <li>&gt;2.5：可能存在胰島素抵抗</li>
+          <li>&gt;3.0：胰島素阻抗症候群高風險</li>
+          <li>&gt;4.0：可能與 T2DM、代謝症候群相關</li>
+        </ul>
+        <p>HOMA-β 參考值：</p>
+        <ul>
+          <li>&gt;100%：β 細胞功能良好</li>
+          <li>50-100%：正常範圍</li>
+          <li>30-50%：β 細胞功能下降</li>
+          <li>&lt;30%：明顯 β 細胞衰竭</li>
+        </ul>
       </div>
     </div>
   </div>
