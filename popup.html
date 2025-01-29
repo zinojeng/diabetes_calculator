@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>糖尿病計算器</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>糖尿病數值轉換器</h1>
+  
+  <div class="tabs">
+    <button class="tab-button active" data-tab="hba1c">HbA1c轉換器</button>
+    <button class="tab-button" data-tab="ga">GA轉換器</button>
+  </div>
+
+  <div id="hba1c-tab" class="tab-content active">
+    <form id="hba1c-form">
+      <div class="input-group">
+        <label for="hba1c-value">HbA1c值 (%):</label>
+        <input type="number" id="hba1c-value" name="hba1c-value" step="0.1" required>
+      </div>
+      <button type="submit">轉換為eAG</button>
+    </form>
+    <div id="hba1c-result" class="result-box"></div>
+    <div class="info-box">
+      <p>計算公式: eAG = 28.7 × HbA1c - 46.7 (ADAG研究)</p>
+      <p>參考範圍:</p>
+      <table class="reference-table">
+        <tr>
+          <th>HbA1c (%)</th>
+          <th>eAG (mg/dL)</th>
+          <th>95% CI (mg/dL)</th>
+        </tr>
+        <tr><td>5.0</td><td>97</td><td>76-120</td></tr>
+        <tr><td>6.0</td><td>126</td><td>100-152</td></tr>
+        <tr><td>7.0</td><td>154</td><td>123-185</td></tr>
+        <tr><td>8.0</td><td>183</td><td>147-217</td></tr>
+        <tr><td>9.0</td><td>212</td><td>170-249</td></tr>
+        <tr><td>10.0</td><td>240</td><td>193-282</td></tr>
+        <tr><td>11.0</td><td>269</td><td>217-314</td></tr>
+        <tr><td>12.0</td><td>298</td><td>240-347</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="ga-tab" class="tab-content">
+    <form id="ga-form">
+      <div class="input-group">
+        <label for="ga-value">糖化白蛋白(GA) 值 (%):</label>
+        <input type="number" id="ga-value" name="ga-value" step="0.1" required>
+      </div>
+      <button type="submit">計算轉換值</button>
+    </form>
+    <div id="ga-result" class="result-box"></div>
+    <div class="info-box">
+      <p>HbA1c 計算公式: HbA1c = 0.216 × GA + 2.978</p>
+      <p>eAG 計算公式: eAG = 4.71 × GA + 73.3514 (mg/dL)</p>
+      <div class="reference-info">
+        <p>參考資訊：</p>
+        <ul>
+          <li>GA 正常值範圍：11-16%</li>
+          <li>GA 反映近 2-4 週的平均血糖水平</li>
+          <li>GA 18-19% 對應的平均血糖約為 155-160 mg/dL</li>
+          <li>血糖每變化 10 mg/dL，GA 值大約會變化 2%</li>
+        </ul>
+        <p class="note">注意：eAG 計算公式適用於末期腎病患者</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "糖尿病數值轉換器",
+    "version": "1.0",
+    "description": "一個用於轉換糖尿病相關數值的工具，包含 HbA1c、GA 和 eAG 的轉換計算",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    },
+    "icons": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "permissions": [],
+    "author": "您的名字或組織",
+    "homepage_url": "您的網站（選填）"
+  }
