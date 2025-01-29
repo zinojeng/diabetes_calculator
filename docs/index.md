@@ -20,4 +20,4 @@
 
 ### 聯絡方式
 如有任何問題或疑慮，請透過 GitHub Issues 聯絡我們：
-https://github.com/zinojeng/diabetes_calculator/issues 
+https://github.com/zinojeng/diabetes_calculator/issues
